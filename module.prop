@@ -1,0 +1,7 @@
+id=com.hazbu.xcam
+name=xCam
+version=v0.6
+versionCode=6
+author=hazbu
+description=            android:name="xposeddescription"
+support=https://github.com/Xposed-Modules-Repo/com.hazbu.xcam/issues
