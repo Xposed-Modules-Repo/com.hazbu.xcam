@@ -1,48 +1,50 @@
 # xCam - Virtual Camera Xposed Module
 
-**xCam** is a high-performance Xposed module designed to replace the physical camera feed with a virtual media source (images or videos). Leveraging hardware-accelerated rendering, xCam provides a seamless and stable injection experience for modern Android applications.
+**xCam** is a high-performance Xposed module built with the modern **LibXposed API (API 101)**. It is designed to replace the physical camera feed with a virtual media source (images or videos) using hardware-accelerated rendering for a seamless and stable injection experience.
 
 ## 🚀 Key Features
 
-- **Hardware-Accelerated Rendering**: Powered by **OpenGL ES 2.0** and the **Egloo** library for smooth, low-latency video and image injection.
-- **Universal API Support**: Fully compatible with legacy **Camera1** and modern **Camera2** (including CameraX) frameworks.
+- **Modern LibXposed Architecture**: Fully utilizes the latest **LibXposed API (101)**, ensuring maximum compatibility with **LSPosed**, **Vector**, **NPatch**, and **LSPatch**.
+- **Hardware-Accelerated Rendering**: Powered by a custom **OpenGL ES 2.0** engine for smooth, low-latency video and image injection.
+- **Universal API Support**: Compatible with legacy **Camera1** and modern **Camera2** (including CameraX) frameworks.
+- **Real-time Status Tracking**: 
+    - **Instan Activation**: Direct binding to the Xposed Service for immediate status detection.
+    - **Active Scopes Display**: View icons of all applications where the module is currently active directly in the manager.
 - **Advanced Media Controls**:
-    - **90° Rotation**: Manually rotate your media in four directions to match the target app's orientation.
-    - **Horizontal Mirroring**: Flip your media horizontally to simulate front-facing camera behavior.
-- **Smart Aspect Ratio**: Features a **1:1 square preview** and intelligent "Center Crop" logic to ensure your media never appears distorted or stretched in the target application.
-- **Unified Pipeline**: Both images (`.jpg`, `.png`) and videos (`.mp4`) are processed through the same high-performance GPU pipeline.
-- **Internal Media Management**: Automatically imports media to a secure internal directory, bypassing modern Android scoped storage and URI permission restrictions.
-- **Material 3 Interface**: A clean, modern management app with support for **Dynamic Colors** and intuitive icon-based controls.
+    - **90° Rotation**: Rotate media in 90-degree steps (Left/Right) to match any target app's orientation.
+    - **Horizontal Mirroring**: Flip media horizontally to simulate front-facing camera behavior.
+- **Smart Aspect Ratio**: Intelligent **1:1 Center Crop** logic ensures your media never appears distorted or stretched.
+- **Internal Media Management**: Automatically imports media to a secure internal directory, bypassing Android scoped storage restrictions.
+- **Material 3 Interface**: Clean management app with **Dynamic Colors** and intuitive icon-based controls.
 
-## 🛠 Prerequisites
+## 🛠 Compatibility
 
-- **Rooted**: A device with **LSPosed Manager** (recommended).
-- **Non-Rooted**: A device with **LSPatch** installed to patch target applications.
+- **Rooted**: **LSPosed** or **Vector** (Recommended).
+- **Non-Rooted**: **NPatch** or **LSPatch**.
 
 ## 📦 Installation
 
-### For Rooted Users (LSPosed)
+### LSPosed / Vector (Root)
 1. Download and install the latest **xCam APK**.
-2. Open **LSPosed Manager**, find **xCam**, and **Enable** the module.
+2. Open your Xposed manager (LSPosed/Vector), find **xCam**, and **Enable** the module.
 3. Select the **target applications** (scope) and restart them.
+4. The status in the xCam app will change to **Active** once a target is selected.
 
-### For Non-Rooted Users (LSPatch)
-1. Install the **xCam APK** on your device.
-2. Open the **LSPatch Manager** app.
-3. Choose the target application you want to use.
-4. Select **Embed Module** and choose **xCam**.
-5. Patch, install, and run the modified application.
+### NPatch / LSPatch (Non-Root)
+1. Install the **xCam APK**.
+2. Use **NPatch** or **LSPatch** to patch your target application.
+3. (Optional) For instant status detection, patch the **xCam** app itself.
+4. Install and run the modified application.
 
 ## 📖 Usage
 
 1. Launch the **xCam** manager app.
-2. Tap **Select Media** to choose a video or image from your gallery.
-3. Use the **Icon Controls** below the 1:1 preview:
-    - 🔄 **Rotate Left/Right**: Adjust the orientation in 90-degree steps.
-    - ↔️ **Mirror**: Flip the image/video horizontally.
-4. Transformations are saved automatically and reset when you pick a new media file.
-5. Open your target app. The virtual media will now replace the live camera feed.
-6. To stop injection, tap the **X** (close) icon on the preview card in the xCam app.
+2. Tap **Select Media** to choose a video (`.mp4`) or image (`.jpg`, `.png`) from your gallery.
+3. Use the **Icon Controls** below the preview:
+    - 🔄 **Rotate Left/Right**: Adjust orientation.
+    - ↔️ **Mirror**: Toggle horizontal flip.
+4. Open your target app. The virtual media will now replace the live camera feed.
+5. To stop injection, tap the **X** (close) icon on the preview card.
 
 ## ⚖️ License
 
