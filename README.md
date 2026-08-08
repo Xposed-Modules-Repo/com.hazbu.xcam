@@ -1,39 +1,38 @@
-# xCam - Universal Virtual Camera Xposed Module
+# xCam - Universal Virtual Camera Xposed Module (v17.5-Stable)
 
-**xCam** is a high-performance, universal Xposed module built with the modern **LibXposed API (API 101)**. It allows users to replace live camera feeds and actual photo/video captures with virtual media sources (videos or images) across a wide range of Android applications.
+**xCam** is a high-performance, universal Xposed module built with the modern **LibXposed API (API 101)**. It allows users to replace live camera feeds and actual photo captures with virtual media sources across a wide range of Android applications, from legacy devices to the latest Android 16.
 
 ## 🚀 Key Features
 
-- **Full Capture Injection**: Replaces both the live preview and the **actual captured photo data** using JPEG (0x21/HAL_PIXEL_FORMAT_BLOB) injection techniques.
-- **Universal Dual-Engine**:
-    - **Advanced Legacy Engine**: High-performance OpenGL rendering and Byte Array hijacking for modern applications using legacy camera layers.
-    - **Classic Camera Engine**: Advanced Surface Redirection and Direct MediaPlayer playback for applications using older camera APIs.
-- **Synchronized Orientation**: Any rotation (90° steps) or horizontal mirroring applied to the preview is **perfectly synced** to the final captured result.
-- **Smart Aspect Ratio**: Intelligent **Center Crop** logic ensures your media matches the target application's aspect ratio, preventing distorted or "stretched" results.
+- **Universal OS Support (Android 9 - 16)**: Built with a hybrid architecture that automatically adapts to the device's API level (API 28 to API 37).
+- **Dual-Engine Pipeline**:
+    - **Legacy Engine (API 28-30)**: Uses high-stability Camera1 hooks and Legacy Camera2 `produceFrame` hijacking for Android 9, 10, and 11.
+    - **Modern Engine (API 31-37)**: Features **Surgical Diversion** and **OutputConfiguration Swapping** to bypass the strict security of Android 12 through Android 16.
+- **The Hunter Hook (Universal Capture)**: A revolutionary `BitmapFactory` interception system that ensures 100% success in replacing captured photo data across almost any application.
+- **Surgical Target Diversion**: Intelligently redirects only the preview streams to a dummy source while allowing the actual capture data flow to reach our interceptors, preventing app hangs during photo sessions.
 - **Hardware-Accelerated Rendering**: Powered by **OpenGL ES 2.0** for low-latency, battery-efficient video injection.
-- **Modern LibXposed Architecture**: Fully compatible with modern Xposed environments like **LSPosed**, **Vector**, and **LSPatch**.
-- **Process-Aware Hooking**: Intelligently identifies main application processes vs. sub-processes to prevent loops and ensure system stability.
+- **Perfect Orientation Sync**: Synchronizes rotation (90° steps) and mirroring between the preview and the final capture automatically.
+- **Intelligent Center Crop**: Prevents distorted or stretched images by automatically adjusting the virtual media to the target app's aspect ratio.
 
 ## 📦 Installation
 
 ### Rooted Environments
 1. Install the **xCam APK**.
-2. Enable the module in your Xposed manager.
-3. Select the **target applications** in the scope/manager.
+2. Enable the module in your Xposed manager (e.g., **LSPosed**, **Vector**).
+3. Select the **target applications** in the module scope.
 4. Force stop and restart the selected applications.
 
 ### Non-Rooted Environments
-1. Install the **xCam APK**.
-2. Patch your target application using a compatible patching tool.
-3. Install and run the patched application.
+1. Patch your target application using a tool like **LSPatch**.
+2. Install the patched application and the xCam manager.
 
 ## 📖 Usage
 
 1. Launch the **xCam** manager app.
-2. Tap **Select Media** to choose a video (`.mp4`) or image (`.jpg`, `.png`).
-3. Adjust the orientation using the **Rotate** and **Mirror** icons until the preview looks correct.
-4. Open your target application. The virtual media will now replace the live camera feed.
-5. Perform a capture operation; the result will be your virtual media, perfectly aligned and rotated.
+2. Tap **Select Media** to choose a video (`.mp4`).
+3. Adjust the orientation using the **Rotate** and **Mirror** icons.
+4. Open your target application. The live camera feed will be replaced by your video.
+5. Take a photo; xCam will intercept the process and save your virtual media as the result.
 
 ## ⚖️ License
 
@@ -45,4 +44,4 @@ Copyright (C) 2026 hazbu
 
 ## ⚠️ Disclaimer
 
-This module is intended for **educational and development purposes only**. Use it responsibly and at your own risk. The developer is not responsible for any misuse, privacy violations, or breaches of third-party service terms.
+This module is intended for **educational and development purposes only**. Use it responsibly and at your own risk. The developer is not responsible for any misuse or breaches of third-party service terms.
