@@ -1,7 +1,7 @@
 id=com.hazbu.xcam
 name=xCam
-version=0.8
-versionCode=8
+version=0.9
+versionCode=9
 author=hazbu
 description=Virtual Camera Injection for Images and Videos with Rotation and Mirroring support.
 support=https://github.com/Xposed-Modules-Repo/com.hazbu.xcam/issues
